@@ -31,7 +31,7 @@ ContactNode* GetNextContactNode(ContactNode* thisNode) {
 }
 
 void PrintContactNode(ContactNode* thisNode) {
-    printf("Name: %s\nPhone number: %s\n\n", thisNode->contactName, thisNode->contactName);
+    printf("Name: %s\nPhone number: %s\n\n", thisNode->contactName, thisNode->contactPhoneNum);
 }
 
 void DestroyContactNode(ContactNode* thisNode) {

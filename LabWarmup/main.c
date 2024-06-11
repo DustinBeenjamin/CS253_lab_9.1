@@ -1,43 +1,42 @@
 #include <stdio.h>
 #include "ContactNode.h"
 #include <stdlib.h>
-#define NUM_CONTACTS 4
+#define NUM_CONTACTS 3
 
 void TrimNewline(char string[]);
 
 
 int main() {
 
-    ContactNode* head_node;
-    ContactNode* current_node;
-    ContactNode* next_node;
-
-    head_node = CreateContactNode("1", "1");
-    current_node = head_node;
-
-    ContactNode* node_one = CreateContactNode("2", "2");
-    ContactNode* node_two = CreateContactNode("3", "3");
-    ContactNode* node_three = CreateContactNode("4", "4");
-
-    InsertContactNodeAfter(head_node, node_one);
-    InsertContactNodeAfter(node_one, node_two);    
-    InsertContactNodeAfter(node_two, node_three);    
+    ContactNode* head_node = NULL;
+    ContactNode* current_node = NULL;
+    ContactNode* next_node = NULL;
 
     for (int i = 0; i < NUM_CONTACTS; i++) {
-        PrintContactNode(current_node);
-        current_node = GetNextContactNode(current_node);
-    }
+        ContactNode* node = CreateContactNode("none", "none");
+        printf("Person %d\n", i + 1);
+        printf("Enter a name:\n");
+        scanf("%s", node->contactName);
+        printf("Enter a phone number:\n");
+        scanf("%s", node->contactPhoneNum);
+        printf("\n");
+        if (current_node == NULL) {
+            head_node = current_node = node;
+        } else {
+            InsertContactNodeAfter(current_node, node);
+            current_node = GetNextContactNode(current_node);
+        }
+    }   
 
     current_node = head_node;
-    while (current_node != NULL) {
+    printf("CONTACT LIST\n");
+    while(current_node != NULL) {
         next_node = GetNextContactNode(current_node);
+        PrintContactNode(current_node);
         DestroyContactNode(current_node);
         current_node = next_node;
     }
-
-
-
-
+    
 
 
 
