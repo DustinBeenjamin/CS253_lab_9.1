@@ -18,6 +18,7 @@ ContactNode* CreateContactNode(char nameInit[], char phoneNumInit[]) {
         strcpy(node->contactPhoneNum, phoneNumInit);
         node->nextNodePtr = NULL;
     }
+    node->nextNodePtr = NULL;
     return node;
 }
 
